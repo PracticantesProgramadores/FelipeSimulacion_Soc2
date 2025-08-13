@@ -1,6 +1,6 @@
 body{
     font-family: 'Courier New', Courier, monospace;
-    background-image: url(../imagenes/ChatGPT\ Image\ 12\ ago\ 2025\,\ 11_10_30\ a.m..png);
+    background-image: url(ChatGPT\ Image\ 12\ ago\ 2025\,\ 11_10_30\ a.m..png);
 }
 .container{
     background-color: hsla(0, 1%, 40%, 0.9);
@@ -119,4 +119,5 @@ textarea.campo{
     color: red;
     cursor: no-drop;
     pointer-events: none;
+
 } 
