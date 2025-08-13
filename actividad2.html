@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <title>Actividad Sociales 2</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Actividad Sociales 2</h1>
+        <h3>Texto #2, responde de igual manera este segundo texto para finalizar la actividad. Deberas seleccionar el boton verificar una vez ingresado el texto para que se pueda hacer la validacion en caso de que sea correcto</h3>
+
+        <div class="containerPreg">
+            <!-- <p>El descubrimiento de América se produjo el 12 de octubre de <span id="op1" class="texto1" onclick="modificar(this)">1493</span>, cuando cristóbal colón llegó a las costas de continente que hoy conocemos como <span id="op2" class="texto2" onclick="modificar(this)">Africa</span>.<br>Colón realizó cuatro viajes, pero en el primero partío desde el puerto de <span id="op3" class="texto3" onclick="modificar(this)">Madrid</span> con tres barcos: la Niña, la Pinta y la <span id="op4" class="texto4" onclick="modificar(this)">Santa Rosa</span>.<br>Este acontecimiento marcó el inicio <span id="op5" class="texto5" onclick="modificar(this)">del Imperio Romano</span> en América, y provocó cambios culturales y económicos en todo el mundo.</p> -->
+
+            <p>La Batalla de Boyacá se libró el 7 de agosto de <span id="op1" class="texto1" onclick="modificar(this)">1818</span>, y fue el enfrentamiento decisivo para la independencia de Colombia.<br>El ejército patriota, dirigido por <span id="op2" class="texto2" onclick="modificar(this)">Francisco de Paula Santander</span>, derrotó a las tropas realistas comandadas por <span id="op3" class="texto3" onclick="modificar(this)">Simón Bolívar</span>.<br>Gracias a esta victoria, la ciudad de <span id="op4" class="texto4" onclick="modificar(this)">Cartagena</span> quedó libre de los españoles y se consolidó la independencia de Nueva Granada</p>
+
+            <!-- <div id="opciones"></div> -->
+        </div>
+        <div class="containerTexto">
+            <textarea id="campo1" class="campo oculto" placeholder="1818"></textarea>
+            <textarea id="campo2" class="campo oculto" placeholder="Francisco de paula Santander"></textarea>
+            <textarea id="campo3" class="campo oculto" placeholder="Simon Bolivar"></textarea>
+            <textarea id="campo4" class="campo oculto" placeholder="Cartagena"></textarea>
+        </div>
+        <p id="mensaje" class="mensaje"></p>
+        <button class="btnV" onclick="verificar()">Verificar</button>
+        <button class="btnS" onclick="finalizar()">Finalizar</button>
+    </div>
+    <script>
+        let respuestas= ["", "", "", ""];
+        let clasesTextos= ["texto1", "texto2", "texto3", "texto4"];
+        let campo1= document.getElementById("campo1");
+        let campo2= document.getElementById("campo2");
+        let campo3= document.getElementById("campo3");
+        let campo4= document.getElementById("campo4");
+        let correctas2= 0;
+        let cont2= 0;
+
+        function modificar(seleccion){  
+            // let textoIngresado= campo.value;
+
+            if(seleccion.id === "op1"){
+                document.getElementById("campo1").classList.remove("oculto");
+            }else if(seleccion.id === "op2"){
+                document.getElementById("campo2").classList.remove("oculto");
+            }else if(seleccion.id === "op3"){
+                document.getElementById("campo3").classList.remove("oculto");
+            }else{
+                document.getElementById("campo4").classList.remove("oculto");
+            }
+        } 
+        function verificar(){ 
+            const mensaje= document.getElementById("mensaje");
+            let textoCorrecto= "";
+            if(!campo1.classList.contains("oculto")){
+                let op1= document.getElementById("op1");
+                let clase= clasesTextos[0];
+                op1.textContent= campo1.value;
+                textoCorrecto= "1819";
+                if(campo1.value.trim() === textoCorrecto){
+                    correctas2++;
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoC");
+                }else{
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoI");
+                }
+                document.getElementById("campo1").classList.add("oculto");
+            }if(!campo2.classList.contains("oculto")){
+                let op2= document.getElementById("op2");
+                let clase= clasesTextos[1];
+                op2.textContent= campo2.value;
+                textoCorrecto= "Simon Bolivar";
+                if(campo2.value.trim().toLowerCase() == textoCorrecto.trim().toLowerCase()){
+                    correctas2++;
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoC");
+                }else{
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoI");
+                }
+                document.getElementById("campo2").classList.add("oculto");
+            }if(!campo3.classList.contains("oculto")){
+                let op3= document.getElementById("op3");
+                let clase= clasesTextos[2];
+                op3.textContent= campo3.value;
+                textoCorrecto= "Jose Maria Barreiro";
+                if(campo3.value.trim().toLowerCase() === textoCorrecto.trim().toLowerCase()){
+                    correctas2++;
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoC");
+                }else{
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoI");
+                }
+                document.getElementById("campo3").classList.add("oculto");
+            }if(!campo4.classList.contains("oculto")){
+                let op4= document.getElementById("op4");
+                let clase= clasesTextos[3];
+                op4.textContent= campo4.value;
+                textoCorrecto= "Bogota";
+                if(campo4.value.trim().toLowerCase() === textoCorrecto.trim().toLowerCase()){
+                    correctas2++;
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoC");
+                }else{
+                    cont2++;
+                    document.getElementsByClassName(clase)[0].classList.add("textoI");
+                }
+                document.getElementById("campo4").classList.add("oculto");
+            }
+        }
+        function finalizar(){
+            if(cont2== 4){
+                let msj2= "Respuestas correctas ejercicio#2: "+correctas2;
+                let msj= localStorage.getItem("mensaje");
+                alert("Felicitaciones!, terminaste la actividad. \n"+msj+ "\n"+ msj2);
+                // window.location.href= 'actividad2.html';
+            }else{
+                alert("Responde todas las preguntas para poder finalizar la actividad");
+            }
+        }
+    </script>
+</body>
+</html>
